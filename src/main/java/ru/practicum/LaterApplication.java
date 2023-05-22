@@ -40,5 +40,6 @@ public class LaterApplication {
         dispatcherWrapper.setLoadOnStartup(1); //сервлет будет инициализирован при запуске контейнера, а не при первом запросе
 
         tomcat.start();
+
     }
 }
