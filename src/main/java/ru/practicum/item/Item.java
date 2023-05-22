@@ -1,12 +1,13 @@
-package ru.practicum.user;
+package ru.practicum.item;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class User {
+class Item {
+
     private Long id;
-    private String email;
-    private String name;
+    private Long userId;
+    private String url;
 }
