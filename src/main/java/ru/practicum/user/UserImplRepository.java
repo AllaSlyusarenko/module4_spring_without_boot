@@ -24,7 +24,7 @@ public class UserImplRepository implements UserRepository {
 
     @Override
     public User save(User user) {
-        User fullUser = new User(globalUserId, user.getEmail(), user.getName());
+        User fullUser = new User();
         users.put(globalUserId, fullUser);
         return fullUser;
     }

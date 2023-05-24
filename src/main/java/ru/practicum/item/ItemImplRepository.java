@@ -25,7 +25,7 @@ public class ItemImplRepository implements ItemRepository {
 
     @Override
     public Item save(Long userId,Item item) {
-        Item fullItem = new Item(globalItemId, userId, item.getUrl());
+        Item fullItem = new Item();
         items.put(globalItemId, fullItem);
         return fullItem;
     }
