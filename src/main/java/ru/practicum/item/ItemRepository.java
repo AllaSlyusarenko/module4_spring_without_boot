@@ -6,7 +6,7 @@ interface ItemRepository {
 
     List<Item> findByUserId(long userId);
 
-    Item save(Long userId, Item item);
+    Item save(Item item);
 
     void deleteByUserIdAndItemId(long userId, long itemId);
 }
