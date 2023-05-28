@@ -11,12 +11,14 @@ import java.util.Set;
 @Entity
 @Table(name = "items")
 @Getter @Setter @ToString
+public
 class Item {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "user_id")
+    @ManyToOne
     private Long userId;
 
     @Column
