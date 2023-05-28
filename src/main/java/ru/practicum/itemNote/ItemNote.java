@@ -7,6 +7,7 @@ import ru.practicum.item.*;
 
 import javax.persistence.*;
 import java.time.Instant;
+import java.time.temporal.TemporalAccessor;
 
 @Entity
 @Table(name = "item_notes")
@@ -21,9 +22,9 @@ public class ItemNote {
     @Column(name = "text")
     private String text;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "items_id")
-    private Item idItem;
+    private Item Item;
 
     @Column(name = "registration_date_notes")
     private Instant registrationDateNote = Instant.now();
@@ -40,5 +41,6 @@ public class ItemNote {
     public int hashCode() {
         return getClass().hashCode();
     }
+
 }
 

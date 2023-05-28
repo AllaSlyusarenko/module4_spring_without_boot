@@ -22,6 +22,6 @@ CONSTRAINT fk_tags_to_items FOREIGN KEY(item_id) REFERENCES items(id) );
 CREATE TABLE IF NOT EXISTS item_notes (
 id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
 text VARCHAR(2000),
-id_item VARCHAR(1000),
+id_item BIGINT,
 registration_date_notes timestamp,
-CONSTRAINT fk_item_notes_to_item FOREIGN KEY(id_item) REFERENCES items(id);
+CONSTRAINT items FOREIGN KEY(id_item) REFERENCES items(id);
