@@ -1,8 +1,8 @@
-package ru.practicum.itemNote;
+package ru.practicum.note;
 
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
-import ru.practicum.item.Item;
+import ru.practicum.item.model.Item;
 
 import java.time.ZoneOffset;
 import java.time.format.DateTimeFormatter;
@@ -16,7 +16,7 @@ public class ItemNoteMapper {
         String dateOfNote = DateTimeFormatter
                 .ofPattern("yyyy.MM.dd hh:mm:ss")
                 .withZone(ZoneOffset.UTC)
-                .format(itemNote.getRegistrationDateNote());
+                .format(itemNote.getDateOfNote());
 
         return new ItemNoteDto(
                 itemNote.getId(),

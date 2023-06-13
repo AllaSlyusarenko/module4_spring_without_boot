@@ -18,10 +18,10 @@ class UserServiceImpl implements UserService {
         return UserMapper.mapToUserDto(users);
     }
 
+    @Transactional
     @Override
     public UserDto saveUser(UserDto userDto) {
         User user = repository.save(UserMapper.mapToNewUser(userDto));
         return UserMapper.mapToUserDto(user);
     }
-
 }

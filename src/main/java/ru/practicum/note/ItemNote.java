@@ -1,39 +1,40 @@
-package ru.practicum.itemNote;
+package ru.practicum.note;
 
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import ru.practicum.item.*;
+import ru.practicum.item.model.Item;
 
 import javax.persistence.*;
 import java.time.Instant;
-import java.time.temporal.TemporalAccessor;
 
 @Entity
-@Table(name = "item_notes")
 @Getter
 @Setter
 @ToString
+@Table(name = "item_notes")
 public class ItemNote {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "text")
+    @ManyToOne(fetch = FetchType.LAZY)
+    // исключаем все поля с отложенной загрузкой из
+    // метода toString, чтобы не было случайных обращений
+    // базе данных, например при выводе в лог.
+    @ToString.Exclude
+    private Item item;
+
     private String text;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "items_id")
-    private Item Item;
-
-    @Column(name = "registration_date_notes")
-    private Instant registrationDateNote = Instant.now();
+    @Column(name = "note_date")
+    private Instant dateOfNote = Instant.now();
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof ItemNote)) return false;
-        ItemNote itemNote = (ItemNote) o;
         return id != null && id.equals(((ItemNote) o).getId());
     }
 
@@ -41,6 +42,4 @@ public class ItemNote {
     public int hashCode() {
         return getClass().hashCode();
     }
-
 }
-
