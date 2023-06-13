@@ -23,4 +23,5 @@ class UserServiceImpl implements UserService {
         User user = repository.save(UserMapper.mapToNewUser(userDto));
         return UserMapper.mapToUserDto(user);
     }
+
 }
